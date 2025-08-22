@@ -2,6 +2,10 @@
 
 This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm adding it here so other people can read it as well. This repo is not officially Beckhoff. If you do need further help with TwinCAT, please contact your local Beckhoff Subsidiary.  
 
+## This document covers
+- Migration
+- Connecting to 4024 Target
+- Uninstalling
 
 
 
@@ -42,6 +46,11 @@ TcMigrateCmd upgrade --whatIf False
 	3. This should attempt to reinstall the equivalent 4026 version of 4024 packages you had installed
 ### - Additional Command Line Commands
  https://infosys.beckhoff.com/content/1033/tc3_installation/15698626059.html?id=5147078465983576506
+
+>[!Important] First time opening TcXaeShell
+> - if this is the first time your laptop/desktop/machine is using TwinCAT
+> - Open TwinCAT via the Windows 11 taskbar system tray the first time
+ 
 ## Control/Connect to a 4024 XAR via 4026 XAE
 - due to the significant difference between v4026 and v4024
 - A remote manager will need to be used
@@ -54,4 +63,15 @@ TcMigrateCmd upgrade --whatIf False
 ### - Via command line
 ```shell
 tcpkg source add -n="Beckhoff Outdated Feed" -s=https://public.tcpkg.beckhoff-cloud.com/api/v1/feeds/outdated --priority=1 -u=[UserName] --password=[myBeckhoff Password]
+```
+## Uninstalling Steps
+- Rather than going via "Add or Remove Programs" in Windows
+1. Start the command prompt as Administrator
+2. Check what is installed: 
+```shell
+tcpkg list -i
+```
+3. Then uninstall: 
+```shell
+tcpkg uninstall all
 ```
