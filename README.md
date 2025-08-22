@@ -44,12 +44,11 @@ TcMigrateCmd upgrade --whatIf False
 	1. When it restarts **DO NOT DO ANYTHING**
 	2. A new command prompt should open/be requested to open and will continue the migration
 	3. This should attempt to reinstall the equivalent 4026 version of 4024 packages you had installed
-### - Additional Command Line Commands
- https://infosys.beckhoff.com/content/1033/tc3_installation/15698626059.html?id=5147078465983576506
-
->[!Important] First time opening TcXaeShell
+>[!Important]
 > - if this is the first time your laptop/desktop/machine is using TwinCAT
 > - Open TwinCAT via the Windows 11 taskbar system tray the first time
+### - Additional Command Line Commands
+ https://infosys.beckhoff.com/content/1033/tc3_installation/15698626059.html?id=5147078465983576506
  
 ## Control/Connect to a 4024 XAR via 4026 XAE
 - due to the significant difference between v4026 and v4024
