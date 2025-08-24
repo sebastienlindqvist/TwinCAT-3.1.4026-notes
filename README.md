@@ -1,16 +1,15 @@
 # TwinCAT 3.1.4026 Notes
+This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm adding it here so other people can read it as well. This repo is not officially Beckhoff. If you do need further help with TwinCAT, please contact your local Beckhoff Subsidiary/Representatives.  
 
-This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm adding it here so other people can read it as well. This repo is not officially Beckhoff. If you do need further help with TwinCAT, please contact your local Beckhoff Subsidiary.  
-
-## This document covers
-- Migration
+### - Content:
+- Migration via Command Line
 - Connecting to 4024 Target
-- Uninstalling
+- TC2 and TC3.1.4026 
+- Uninstalling 4026
+- Downgrade to 4024
 
-
-
-## Migrate via Command Line
->[!Important] 
+## Migration via Command Line
+>[!Important]
 > - Please **DO NOT** use a VPN
 > - Please read through all steps prior to starting
 - The steps below are completely via command line.
@@ -59,11 +58,25 @@ TcMigrateCmd upgrade --whatIf False
 2. Open Settings
 3. Go to `Feeds`
 4. Add `Outdated` from the dropdown list and that should autofill the rest apart from login credentials
+![alt text](images/OutdatedFeed.png)
+5. Now `Remote Manager` workload should have mutliple options for 4024,4022,4020,4018
+![alt text](images/RMoptions.png)
 ### - Via command line
+- To add Outdated feed to source lise
 ```shell
 tcpkg source add -n="Beckhoff Outdated Feed" -s=https://public.tcpkg.beckhoff-cloud.com/api/v1/feeds/outdated --priority=1 -u=[UserName] --password=[myBeckhoff Password]
 ```
-## Uninstalling Steps
+## TwinCAT 2 and TwinCAT 3.1.4026 on same machine
+- When moving to TC3.1 v4026
+- If you had TwinCAT 2 installed, it would have been removed as well
+- TwinCAT 2 can be reinstalled from the Package manager
+- You'll need to make sure the `Outdated` feed is activated
+- It won't be a `Workload` so you will need to swap to `Packages` view to find it
+	- This is the top left button
+- Seach `TwinCAT.XAE.TC2Engineering` and it should show up
+- Download those packages and TwinCAT 2 options should appear in the System Icon as options
+![alt text](images/TC2options.png)
+## Uninstalling TwinCAT 3.1.4026
 - Rather than going via "Add or Remove Programs" in Windows
 1. Start the command prompt as Administrator
 2. Check what is installed: 
@@ -74,3 +87,11 @@ tcpkg list -i
 ```shell
 tcpkg uninstall all
 ```
+4. Remove `Beckhoff` directory from `Program Data`,`Program Files`, `Program Files(x86)`
+
+## Downgrade from TwinCAT 3.1.4026 to TwinCAT 3.1.4024
+- If you try to run a 4024 .exe with v4026 installed, you'll get an error stating "New version is installed"
+- **DO NOT** remove 4026 via "Add or Remove Programs"
+- Follow the steps above with `Commnad Prompt`
+- Then download the 4024 .exe
+- If you have a partial install of v4026, you'll need to complete it prior to uninstalling to confirm everything has been removed
