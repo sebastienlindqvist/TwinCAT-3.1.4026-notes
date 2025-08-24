@@ -74,7 +74,7 @@ tcpkg source add -n="Beckhoff Outdated Feed" -s=https://public.tcpkg.beckhoff-cl
 - It won't be a `Workload` so you will need to swap to `Packages` view to find it
 	- This is the top left button
 - Seach `TwinCAT.XAE.TC2Engineering` and it should show up
-- Download those packages and TwinCAT 2 options should appear in the System Icon as options
+- Download those packages and TwinCAT 2 options should appear in the System Icon as options  
 ![alt text](images/TC2options.png)
 ## Uninstalling TwinCAT 3.1.4026
 - Rather than going via "Add or Remove Programs" in Windows
