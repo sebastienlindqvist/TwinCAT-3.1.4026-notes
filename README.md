@@ -1,12 +1,15 @@
 # TwinCAT 3.1.4026 Notes
+Date :  24/9/2025  
 This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm adding it here so other people can read it as well. This repo is not officially Beckhoff. If you do need further help with TwinCAT, please contact your local Beckhoff Subsidiary/Representatives.  
 
 ### - Content:
 - Migration via Command Line
-- Connecting to 4024 Target
-- TC2 and TC3.1.4026 
-- Uninstalling 4026
-- Downgrade to 4024
+- Connecting to TwinCAT 3.1.4024 Target
+- TwinCAT 2 and TwinCAT 3.1.4026 
+- Uninstalling TwinCAT 3.1.4026
+- Downgrade to TwinCAT 3.14024
+- Run 4026 locally on Dev Laptop
+- Control TwinCAT via Command Line
 
 ## Migration via Command Line
 >[!Important]
@@ -92,6 +95,26 @@ tcpkg uninstall all
 ## Downgrade from TwinCAT 3.1.4026 to TwinCAT 3.1.4024
 - If you try to run a 4024 .exe with v4026 installed, you'll get an error stating "New version is installed"
 - **DO NOT** remove 4026 via "Add or Remove Programs"
-- Follow the steps above with `Commnad Prompt`
+- Follow the steps above with `Command Prompt`
 - Then download the 4024 .exe
 - If you have a partial install of v4026, you'll need to complete it prior to uninstalling to confirm everything has been removed
+
+## Run locally on Windows 11 Dev Laptop
+- There are 2 methods to running TwinCAT project localy on Windows 11
+- Run the following powershell executable:  
+`C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\System\DisableVirtualizationBasedSecurity.ps1`
+- Alternatively, install the workload `Usermode Runtime` which creates a target that is running above the OS.
+>[!Note] Motion on Usermode runtime
+> - Please note run NC locally, you'll need to download an additional package from the Package Manager which is no longer apart of the Usermode Runtime workload.
+> - Switch the view of `Package Manager` to `Packages`  
+>![alt text](images/PackageView.png)  
+> - Search and download the `TwinCAT.XARUM.NCPTP` package
+
+## ADS PowerShell commands
+- There is a package that needs to be downloaded called `TcXaeMgmt`
+- Open PowerShell as Administrator and run:  
+	```
+	Install-Module -Name TcXaeMgmt
+	```
+- This requires a minimum PowerShell version of `7.0` and TwinCAT `3.1.4024.10`
+- For more checkout the Infosys page about [ADS PowerShell Module](https://infosys.beckhoff.com/content/1033/tc3_ads_ps_tcxaemgmt/15510368395.html?id=472193331586139353)
