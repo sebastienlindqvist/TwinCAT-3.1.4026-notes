@@ -1,6 +1,6 @@
 # TwinCAT 3.1.4026 Notes
 Date :  24/9/2025  
-This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm adding it here so other people can read it as well. This repo is not officially Beckhoff. If you do need further help with TwinCAT, please contact your local Beckhoff Subsidiary/Representatives.  
+This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm adding it here so other people can read it as well. **This repo is not officially Beckhoff**. If you do need further help with TwinCAT, please contact your local Beckhoff Subsidiary/Representatives.  
 
 ### - Content:
 - Migration via Command Line
@@ -118,3 +118,34 @@ tcpkg uninstall all
 	```
 - This requires a minimum PowerShell version of `7.0` and TwinCAT `3.1.4024.10`
 - For more checkout the Infosys page about [ADS PowerShell Module](https://infosys.beckhoff.com/content/1033/tc3_ads_ps_tcxaemgmt/15510368395.html?id=472193331586139353)
+
+## Increasing Memory for Usermode Runtime
+- You'll need to edit the following `.xml` file.  
+	`C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\Runtimes\UmRT_Template\3.1\TcRegistry.xml`
+- Open said file and add the following lines to `Key Name="System"`.  
+```xml
+<Value Name="LockedMemSize" Type="DW">33554432</Value> 
+<Value Name="HeapMemSizeMB" Type="DW">512</Value>
+```
+- You should have something like this:
+```xml
+<?xml version="1.0"?>
+<TcRegistry>
+	<Key Name="HKLM">
+		<Key Name="Software">
+			<Key Name="Beckhoff">
+				<Key Name="TwinCAT3">
+					<Value Name="CurrentVersion" Type="SZ">3.1</Value>
+					<Key Name="System">
+						<Value Name="RunAsDevice" Type="DW">1</Value>
+						<Value Name="LockedMemSize" Type="DW">33554432</Value>
+						<Value Name="HeapMemSizeMB" Type="DW">512</Value>
+					</Key>
+					<Key Name="3.1">						
+					</Key>
+				</Key>
+			</Key>
+		</Key>
+	</Key>
+</TcRegistry>
+```
