@@ -10,6 +10,7 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 - Downgrade to TwinCAT 3.14024
 - Run 4026 locally on Dev Laptop
 - Control TwinCAT via Command Line
+- 
 
 ## Migration via Command Line
 >[!Important]
@@ -45,7 +46,7 @@ TcMigrateCmd upgrade --whatIf False
 9. Halfway through, your computer will request to restart
 	1. When it restarts **DO NOT DO ANYTHING**
 	2. A new command prompt should open/be requested to open and will continue the migration
-	3. This should attempt to reinstall the equivalent 4026 version of 4024 packages you had installed
+	3. This should attempt to reinstall the equivalent 4026 version of 4024 packages you had installed  
 >[!Important]
 > - if this is the first time your laptop/desktop/machine is using TwinCAT
 > - Open TwinCAT via the Windows 11 taskbar system tray the first time
@@ -75,7 +76,7 @@ tcpkg source add -n="Beckhoff Outdated Feed" -s=https://public.tcpkg.beckhoff-cl
 - TwinCAT 2 can be reinstalled from the Package manager
 - You'll need to make sure the `Outdated` feed is activated
 - It won't be a `Workload` so you will need to swap to `Packages` view to find it
-	- This is the top left button
+	- This is the top left button inside the `Package Manager`
 - Seach `TwinCAT.XAE.TC2Engineering` and it should show up
 - Download those packages and TwinCAT 2 options should appear in the System Icon as options  
 ![alt text](images/TC2options.png)
@@ -103,8 +104,9 @@ tcpkg uninstall all
 - There are 2 methods to running TwinCAT project localy on Windows 11
 - Run the following powershell executable:  
 `C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\System\DisableVirtualizationBasedSecurity.ps1`
-- Alternatively, install the workload `Usermode Runtime` which creates a target that is running above the OS.
->[!Note] Motion on Usermode runtime
+- Alternatively, install the workload `Usermode Runtime` which creates a target that is running above the OS.  
+
+>[!Important] Motion on Usermode runtime
 > - Please note run NC locally, you'll need to download an additional package from the Package Manager which is no longer apart of the Usermode Runtime workload.
 > - Switch the view of `Package Manager` to `Packages`  
 >![alt text](images/PackageView.png)  
@@ -149,3 +151,14 @@ tcpkg uninstall all
 	</Key>
 </TcRegistry>
 ```
+
+# Visual Studio Integration issues
+## VS2026 beta
+- Having VS2026 beta installed can prevent `Package Manager` from function correctly.
+- Trying to installed packages after having VS2026 beta installed could cause the following error:  
+	`Error: The given key 'VS18' was not present in the dictionary. Upgrade of TcPkgUI packages failed. ExitCode: 574`  
+- You'll need to uninstall VS2026 which will allow the package manager to function again.
+
+## TE9000 - Safety Projects
+
+## TF2000 - HMI projects
