@@ -106,7 +106,8 @@ tcpkg uninstall all
 `C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\System\DisableVirtualizationBasedSecurity.ps1`
 - Alternatively, install the workload `Usermode Runtime` which creates a target that is running above the OS.  
 
->[!Important] Motion on Usermode runtime
+>[!Important] 
+> - Motion on Usermode runtime
 > - Please note run NC locally, you'll need to download an additional package from the Package Manager which is no longer apart of the Usermode Runtime workload.
 > - Switch the view of `Package Manager` to `Packages`  
 >![alt text](images/PackageView.png)  
