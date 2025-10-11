@@ -4,28 +4,35 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 
 ### - Content:
 - Migration via Command Line
-- Connecting to TwinCAT 3.1.4024 Target
-- TwinCAT 2 and TwinCAT 3.1.4026 
+- Connecting to TwinCAT 3.1.4024 Target from TwinCAT 3.1.4026
+- TwinCAT 2 and TwinCAT 3.1.4026 on same machine
 - Uninstalling TwinCAT 3.1.4026
-- Downgrade to TwinCAT 3.14024
-- Run 4026 locally on Dev Laptop
+- Downgrade to TwinCAT 3.1.4024
+- Run TwinCAT 3.1.4026 locally on Dev Laptop
 - Control TwinCAT via Command Line
-- 
+- Increasing Memory for Usermode Runtime
+- Visual Studio Integration issues
 
 ## Migration via Command Line
 >[!Important]
 > - Please **DO NOT** use a VPN
-> - Please read through all steps prior to starting
+> - Please close any TwinCAT programs/folders that are currently open
+> - Please read through all steps prior to starting  
+
+
 - The steps below are completely via command line.
 - Attempt installing the GUI the default way prior to this method.
 - The steps below are in case IT security policy are preventing Admin rights.
-	- the GUI open command line multiple times in the background.
+- the GUI open command line multiple times in the background.
+- If you have the ability to be Admin for   
 
+0. Download [TwinCAT Package Manager](https://www.beckhoff.com/en-gb/support/download-finder/search-result/?download_group=725136885&download_item=725320261)
 1. Start the Command Prompt as Administrator
-2. `cd` to directory where the `Package Manager GUI.exe` is located
-3. Execute the `Package Manager GUI.exe NO4024CHECK="true"` 
+2. `cd` to directory where the TwinCAT Package Manager installer (`TwinCAT-Package-Manager-GUI-Setup.exe`) was downloaded to.
+3. Execute the following command in command line.  
+	 `TwinCAT-Package-Manager-GUI-Setup.exe NO4024CHECK="true"` 
 4. Check if the package manager can see any feeds `tcpkg list`
-	1. if not, run the following, fill in square brackets with necessary data
+	1. if not, run the following, replace the square brackets with necessary data
 ```shell
 tcpkg source add -n="Beckhoff Stable Feed" -s=https://public.tcpkg.beckhoff-cloud.com/api/v1/feeds/stable --priority=[UniqueValue, highest is 1] -u=[myBeckhoff Email] --password=[myBeckhoff Password]
 ```
@@ -68,7 +75,7 @@ TcMigrateCmd upgrade --whatIf False
 ### - Via command line
 - To add Outdated feed to source lise
 ```shell
-tcpkg source add -n="Beckhoff Outdated Feed" -s=https://public.tcpkg.beckhoff-cloud.com/api/v1/feeds/outdated --priority=1 -u=[UserName] --password=[myBeckhoff Password]
+tcpkg source add -n="Beckhoff Outdated Feed" -s=https://public.tcpkg.beckhoff-cloud.com/api/v1/feeds/outdated --priority=1 -u=[myBeckhof email] --password=[myBeckhoff Password]
 ```
 ## TwinCAT 2 and TwinCAT 3.1.4026 on same machine
 - When moving to TC3.1 v4026
@@ -108,7 +115,7 @@ tcpkg uninstall all
 
 >[!Important] 
 > - Motion on Usermode runtime
-> - Please note run NC locally, you'll need to download an additional package from the Package Manager which is no longer apart of the Usermode Runtime workload.
+> - Please note, to run NC locally you'll need to download an additional package from the Package Manager which is no longer apart of the Usermode Runtime workload.
 > - Switch the view of `Package Manager` to `Packages`  
 >![alt text](images/PackageView.png)  
 > - Search and download the `TwinCAT.XARUM.NCPTP` package
@@ -161,5 +168,10 @@ tcpkg uninstall all
 - You'll need to uninstall VS2026 which will allow the package manager to function again.
 
 ## TE9000 - Safety Projects
-
+- Trying to add a `TE9000` Safety project to a TwinCAT solution open in Visual Studios
+	- Option to `add New item...` is greyed.
+	- Safety project templates won't load. after pressing `add New item...`.
+- To resolve this, in the `VS installer`, select the `Component` tab and type `SDK tools`
+- It might show up as a different name, but if it the only one when searching. That will be the necessary component to install
+	
 ## TF2000 - HMI projects
