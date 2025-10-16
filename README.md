@@ -1,5 +1,4 @@
-# TwinCAT 3.1.4026 Notes
-Date :  24/9/2025  
+# TwinCAT 3.1.4026 Notes 
 This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm adding it here so other people can read it as well. **This repo is not officially Beckhoff**. If you do need further help with TwinCAT, please contact your local Beckhoff Subsidiary/Representatives.  
 
 ### - Content:
@@ -13,6 +12,11 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 - Increasing Memory for Usermode Runtime
 - Visual Studio Integration issues
 
+>[!Important] 
+> - Please note that `Windows 10 IoT Enterprise 2016` cannot support TwinCAT 4026 as there is a crucial `.NET package` not avialable for Windows 10 IoT Enterprise 2016
+> - The OS on the PC/IPC/ePC will need to be upgraded.
+
+
 ## Migration via Command Line
 >[!Important]
 > - Please **DO NOT** use a VPN
@@ -24,11 +28,11 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 - Attempt installing the GUI the default way prior to this method.
 - The steps below are in case IT security policy are preventing Admin rights.
 - the GUI open command line multiple times in the background.
-- If you have the ability to be Admin for   
+- If you have the ability to be Admin for a multiple minutes then please use that method.
 
 0. Download [TwinCAT Package Manager](https://www.beckhoff.com/en-gb/support/download-finder/search-result/?download_group=725136885&download_item=725320261)
-1. Start the Command Prompt as Administrator
-2. `cd` to directory where the TwinCAT Package Manager installer (`TwinCAT-Package-Manager-GUI-Setup.exe`) was downloaded to.
+1. Start the Command Prompt as `Administrator`
+2. Navigate with `cd` commands to the directory where the TwinCAT Package Manager installer (`TwinCAT-Package-Manager-GUI-Setup.exe`) was downloaded to.
 3. Execute the following command in command line.  
 	 `TwinCAT-Package-Manager-GUI-Setup.exe NO4024CHECK="true"` 
 4. Check if the package manager can see any feeds `tcpkg list`
@@ -165,13 +169,13 @@ tcpkg uninstall all
 - Having VS2026 beta installed can prevent `Package Manager` from function correctly.
 - Trying to installed packages after having VS2026 beta installed could cause the following error:  
 	`Error: The given key 'VS18' was not present in the dictionary. Upgrade of TcPkgUI packages failed. ExitCode: 574`  
-- You'll need to uninstall VS2026 which will allow the package manager to function again.
+- You'll need to uninstall VS2026 via the `Visual Studio Installer` which will allow the package manager to function again.
 
 ## TE9000 - Safety Projects
 - Trying to add a `TE9000` Safety project to a TwinCAT solution open in Visual Studios
 	- Option to `add New item...` is greyed.
 	- Safety project templates won't load. after pressing `add New item...`.
-- To resolve this, in the `VS installer`, select the `Component` tab and type `SDK tools`
+- To resolve this, in the `Visual Studio Installer`, select the `Individual Components` tab and type `DSL` which should show either `modelling SDK/DSL tools`
 - It might show up as a different name, but if it the only one when searching. That will be the necessary component to install
 	
 ## TF2000 - HMI projects
