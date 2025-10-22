@@ -4,12 +4,13 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 ### - Content:
 - Migration via Command Line
 - Connecting to TwinCAT 3.1.4024 Target from TwinCAT 3.1.4026
-- TwinCAT 2 and TwinCAT 3.1.4026 on same machine
 - Uninstalling TwinCAT 3.1.4026
 - Downgrade to TwinCAT 3.1.4024
 - Run TwinCAT 3.1.4026 locally on Dev Laptop
 - Control TwinCAT via Command Line
 - Increasing Memory for Usermode Runtime
+- TwinCAT 2 and TwinCAT 3.1.4026 on same machine
+- Convert TwinCAT 2 projects (.pro) to TwinCAT 3.1.4026
 - Visual Studio Integration issues
 
 >[!Important] 
@@ -53,7 +54,7 @@ TcMigrateCmd upgrade
 TcMigrateCmd upgrade --whatIf False
 ```
 8. This will start the migration
-	- Best time to have a coffee because this will take a while
+	- Best time to have a coffee/tea because this will take a while
 9. Halfway through, your computer will request to restart
 	1. When it restarts **DO NOT DO ANYTHING**
 	2. A new command prompt should open/be requested to open and will continue the migration
@@ -81,16 +82,7 @@ TcMigrateCmd upgrade --whatIf False
 ```shell
 tcpkg source add -n="Beckhoff Outdated Feed" -s=https://public.tcpkg.beckhoff-cloud.com/api/v1/feeds/outdated --priority=1 -u=[myBeckhof email] --password=[myBeckhoff Password]
 ```
-## TwinCAT 2 and TwinCAT 3.1.4026 on same machine
-- When moving to TC3.1 v4026
-- If you had TwinCAT 2 installed, it would have been removed as well
-- TwinCAT 2 can be reinstalled from the Package manager
-- You'll need to make sure the `Outdated` feed is activated
-- It won't be a `Workload` so you will need to swap to `Packages` view to find it
-	- This is the top left button inside the `Package Manager`
-- Seach `TwinCAT.XAE.TC2Engineering` and it should show up
-- Download those packages and TwinCAT 2 options should appear in the System Icon as options  
-![alt text](images/TC2options.png)
+
 ## Uninstalling TwinCAT 3.1.4026
 - Rather than going via "Add or Remove Programs" in Windows
 1. Start the command prompt as Administrator
@@ -163,6 +155,26 @@ tcpkg uninstall all
 	</Key>
 </TcRegistry>
 ```
+
+## TwinCAT 2 and TwinCAT 3.1.4026 on same machine
+- When moving to TC3.1 v4026
+- If you had TwinCAT 2 installed, it would have been removed as well
+- TwinCAT 2 can be reinstalled from the Package manager
+- You'll need to make sure the `Outdated` feed is activated
+- It won't be a `Workload` so you will need to swap to `Packages` view to find it
+	- This is the top left button inside the `Package Manager`
+- Seach `TwinCAT.XAE.TC2Engineering` and it should show up
+- Download those packages and TwinCAT 2 options should appear in the System Icon as options  
+![alt text](images/TC2options.png)
+
+## Convert TwinCAT 2 projects (.pro) to TwinCAT 3
+- You'll need to install the folllowing packages: `TwinCAT.XAE.PLC.Tc2ProjectConverter`, `TwinCAT.XAE.TC2Engineering` from Package Manager.
+- Open a `TcXaeShell (32-bit)` and change build to `4024`
+- Within a TwinCAT Solution .
+	- Right-click `PLC` and click `Add Existing Item...`  
+	![alt text](images/AddExistingItem.png)  
+	- Then you can import a `.pro` file into TwinCAT  
+	![alt text](images/TwinCAT2pro.png)  
 
 # Visual Studio Integration issues
 ## VS2026 beta
