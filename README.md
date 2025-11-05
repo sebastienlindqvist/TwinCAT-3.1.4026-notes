@@ -157,7 +157,7 @@ tcpkg uninstall all
 ```
 
 ## TwinCAT 2 and TwinCAT 3.1.4026 on same machine
-- When moving to TC3.1 v4026
+- When moving to TC3.1.4026
 - If you had TwinCAT 2 installed, it would have been removed as well
 - TwinCAT 2 can be reinstalled from the Package manager
 - You'll need to make sure the `Outdated` feed is activated
