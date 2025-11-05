@@ -3,9 +3,9 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 
 ### - Content:
 - [Migration via Command Line](#Migration-via-Command-Line)
-- [Connecting to TwinCAT 3.1.4024 Target from TwinCAT 3.1.4026](#Control/Connect-to-a-4024-XAR-via-4026-XAE)
-- [Uninstalling TwinCAT 3.1.4026](#Uninstalling-TwinCAT-3.1.4026)
-- [Downgrade to TwinCAT 3.1.4024](#Downgrade-from-TwinCAT-3.1-4026-to-TwinCAT-3.1.4024)
+- [Connecting to TwinCAT 3.1.4024 Target from TwinCAT 3.1.4026](#controlconnect-to-a-4024-xar-via-4026-xae)
+- [Uninstalling TwinCAT 3.1.4026](#uninstalling-twincat-314026)
+- [Downgrade to TwinCAT 3.1.4024](#downgrade-from-twincat-314026-to-twincat-314024)
 - [Run TwinCAT 3.1.4026 locally on Dev Laptop](#run-locally-on-windows-11-dev-laptop)
 - [Control TwinCAT via Command Line](#ads-powershell-commands)
 - [Increasing Memory for Usermode Runtime](#increasing-memory-for-usermode-runtime)
