@@ -3,15 +3,15 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 
 ### - Content:
 - [Migration via Command Line](#Migration-via-Command-Line)
-- Connecting to TwinCAT 3.1.4024 Target from TwinCAT 3.1.4026
-- Uninstalling TwinCAT 3.1.4026
-- Downgrade to TwinCAT 3.1.4024
-- Run TwinCAT 3.1.4026 locally on Dev Laptop
-- Control TwinCAT via Command Line
-- Increasing Memory for Usermode Runtime
-- TwinCAT 2 and TwinCAT 3.1.4026 on same machine
-- Convert TwinCAT 2 projects (.pro) to TwinCAT 3.1.4026
-- Visual Studio Integration issues
+- [Connecting to TwinCAT 3.1.4024 Target from TwinCAT 3.1.4026](#Control/Connect-to-a-4024-XAR-via-4026-XAE)
+- [Uninstalling TwinCAT 3.1.4026](#Uninstalling-TwinCAT-3.1.4026)
+- [Downgrade to TwinCAT 3.1.4024](#Downgrade-from-TwinCAT-3.1-4026-to-TwinCAT-3.1.4024)
+- [Run TwinCAT 3.1.4026 locally on Dev Laptop](#run-locally-on-windows-11-dev-laptop)
+- [Control TwinCAT via Command Line](#ads-powershell-commands)
+- [Increasing Memory for Usermode Runtime](#increasing-memory-for-usermode-runtime)
+- [TwinCAT 2 and TwinCAT 3.1.4026 on same machine](#twincat-2-and-twincat-314026-on-same-machine)
+- [Convert TwinCAT 2 projects (.pro) to TwinCAT 3.1.4026](#convert-twincat-2-projects-pro-to-twincat-3)
+- [Visual Studio Integration issues](#visual-studio-integration-issues)
 
 >[!Important] 
 > - Please note that `Windows 10 IoT Enterprise 2016` cannot support TwinCAT 4026 as there is a crucial `.NET package` not avialable for Windows 10 IoT Enterprise 2016
