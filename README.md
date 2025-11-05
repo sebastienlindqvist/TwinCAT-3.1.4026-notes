@@ -2,7 +2,7 @@
 This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm adding it here so other people can read it as well. **This repo is not officially Beckhoff**. If you do need further help with TwinCAT, please contact your local Beckhoff Subsidiary/Representatives.  
 
 ### - Content:
-- Migration via Command Line
+- [Migration via Command Line](#Migration-via-Command-Line)
 - Connecting to TwinCAT 3.1.4024 Target from TwinCAT 3.1.4026
 - Uninstalling TwinCAT 3.1.4026
 - Downgrade to TwinCAT 3.1.4024
