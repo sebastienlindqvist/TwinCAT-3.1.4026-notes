@@ -7,8 +7,9 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 - [Uninstalling TwinCAT 3.1.4026](#uninstalling-twincat-314026)
 - [Downgrade to TwinCAT 3.1.4024](#downgrade-from-twincat-314026-to-twincat-314024)
 - [Run TwinCAT 3.1.4026 locally on Dev Laptop](#run-locally-on-windows-11-dev-laptop)
-- [Control TwinCAT via Command Line](#ads-powershell-commands)
+- [ADS error 4132 (0x1024)](#adserror-4132-0x1024-rtime-incompatible-software-detected--failed)
 - [Increasing Memory for Usermode Runtime](#increasing-memory-for-usermode-runtime)
+- [Control TwinCAT via Command Line](#ads-powershell-commands)
 - [TwinCAT 2 and TwinCAT 3.1.4026 on same machine](#twincat-2-and-twincat-314026-on-same-machine)
 - [Convert TwinCAT 2 projects (.pro) to TwinCAT 3.1.4026](#convert-twincat-2-projects-pro-to-twincat-3)
 - [Visual Studio Integration issues](#visual-studio-integration-issues)
@@ -104,26 +105,33 @@ tcpkg uninstall all
 - If you have a partial install of v4026, you'll need to complete it prior to uninstalling to confirm everything has been removed
 
 ## Run locally on Windows 11 Dev Laptop
-- There are 2 methods to running TwinCAT project localy on Windows 11
+- There are a few methods to running TwinCAT project localy on Windows 11.
 - Run the following powershell executable:  
 `C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\System\DisableVirtualizationBasedSecurity.ps1`
+### Usermode Runtime:
 - Alternatively, install the workload `Usermode Runtime` which creates a target that is running above the OS.  
 
 >[!Important] 
-> - Motion on Usermode runtime
+> - Motion on Usermode runtime.
 > - Please note, to run NC locally you'll need to download an additional package from the Package Manager which is no longer apart of the Usermode Runtime workload.
 > - Switch the view of `Package Manager` to `Packages`  
 >![alt text](images/PackageView.png)  
-> - Search and download the `TwinCAT.XARUM.NCPTP` package
+> - Search and download the `TwinCAT.XARUM.NCPTP` package.
 
-## ADS PowerShell commands
-- There is a package that needs to be downloaded called `TcXaeMgmt`
-- Open PowerShell as Administrator and run:  
-	```
-	Install-Module -Name TcXaeMgmt
-	```
-- This requires a minimum PowerShell version of `7.0` and TwinCAT `3.1.4024.10`
-- For more checkout the Infosys page about [ADS PowerShell Module](https://infosys.beckhoff.com/content/1033/tc3_ads_ps_tcxaemgmt/15510368395.html?id=472193331586139353)
+### AdsError: 4132 (0x1024, RTIME: incompatible software detected) << failed:
+![alt text](images/ADS_error.png)  
+- In order to use `Docker`, `Virtual Machines` or `WSL` on a Windows 11 machine. Multiple Hypervisor options were enabled.
+
+1. Press the windows key and start typing "Turn Windows features on or off"
+![alt text](images/TurnWindowsFeatures.png)
+
+2. In the following menu, make sure "Virtual Machine Platform" and "Windows Hypervisor Platform" are deselected. In case either option was selected, deselect it and restart your computer for it to take effect.
+![alt text](images/VMP_WHP.png)
+- However, this means you can't have `Docker`, `Virtual Machines`, `WSL` running while wanting to run locally.
+
+### Virtual Machine as a target system:
+- Alternatively, another solution is to have a virtual machine with `TwinCAT 3.1 XAR` installed and use that as a target system.
+- This can be Windows 10, 11, TwinCAT/BSD or TwinCAT RT Linux.
 
 ## Increasing Memory for Usermode Runtime
 - You'll need to edit the following `.xml` file.  
@@ -155,6 +163,14 @@ tcpkg uninstall all
 	</Key>
 </TcRegistry>
 ```
+## ADS PowerShell commands
+- There is a package that needs to be downloaded called `TcXaeMgmt`
+- Open PowerShell as Administrator and run:  
+	```
+	Install-Module -Name TcXaeMgmt
+	```
+- This requires a minimum PowerShell version of `7.0` and TwinCAT `3.1.4024.10`
+- For more checkout the Infosys page about [ADS PowerShell Module](https://infosys.beckhoff.com/content/1033/tc3_ads_ps_tcxaemgmt/15510368395.html?id=472193331586139353)
 
 ## TwinCAT 2 and TwinCAT 3.1.4026 on same machine
 - When moving to TC3.1.4026
@@ -191,3 +207,10 @@ tcpkg uninstall all
 - It might show up as a different name, but if it the only one when searching. That will be the necessary component to install
 	
 ## TF2000 - HMI projects
+-
+-
+-
+-
+
+
+
