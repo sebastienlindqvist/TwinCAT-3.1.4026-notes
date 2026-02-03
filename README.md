@@ -280,7 +280,7 @@ tcpkg remote add -n MyIpc --host 169.254.165.127 --port 22 -u Administrator --in
 - Trying to installed packages after having VS2026 beta installed could cause the following error:  
 	`Error: The given key 'VS18' was not present in the dictionary. Upgrade of TcPkgUI packages failed. ExitCode: 574`  
 - You'll need to uninstall VS2026 via the `Visual Studio Installer` which will allow the package manager to function again.
-
+- This integration issue will be resolved with using `TwinCAT 3.1.4024.21 XAE/XAR`
 ## TE9000 - Safety Projects
 - Trying to add a `TE9000` Safety project to a TwinCAT solution open in Visual Studios
 	- Option to `add New item...` is greyed.
