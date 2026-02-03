@@ -9,6 +9,7 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 - [Run TwinCAT 3.1.4026 locally on Dev Laptop](#run-locally-on-windows-11-dev-laptop)
 - [ADS error 4132 (0x1024)](#adserror-4132-0x1024-rtime-incompatible-software-detected--failed)
 - [Increasing Memory for Usermode Runtime](#increasing-memory-for-usermode-runtime)
+- [TcPkg Functions and Options](#tcpkg-cli---featuresoptions)
 - [Control TwinCAT via Command Line](#ads-powershell-commands)
 - [TwinCAT 2 and TwinCAT 3.1.4026 on same machine](#twincat-2-and-twincat-314026-on-same-machine)
 - [Convert TwinCAT 2 projects (.pro) to TwinCAT 3.1.4026](#convert-twincat-2-projects-pro-to-twincat-3)
