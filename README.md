@@ -163,6 +163,87 @@ tcpkg uninstall all
 	</Key>
 </TcRegistry>
 ```
+
+## TcPkg CLI - features/options
+### Repair 
+```shell
+# this will delete and reinstall the package mentioned as well as its dependencies
+tcpkg repair twincat.standard.xae --include-dependencies
+```
+
+### Downgrading a package
+```shell
+tcpkg upgrade twincat.standard.xae=4026.13.0 --allow-downgrade
+```
+
+
+
+### Export currently installed packges/workloads
+- The exporting option will create a file in `xml` format of currently installed packages.
+```shell
+# Exports a list of installed packages of the local PC
+tcpkg export -o "C:\InstalledPackages.xml"
+```
+```shell
+# Exports a list of installed packages of a remote PC to local PC
+tcpkg export -o "C:\InstalledPackages.xml" -r MyIpc
+```
+### Import packages/workloads from file
+- The importing option will read a file in `xml` format of packages/workloads that need to be installed.
+```shell
+# Downloads the packages listed in the xml to the local PC
+tcpkg import -i "C:\Packages.xml"
+```
+```shell
+# Downloads the packages listed in the xml to a remote PC
+tcpkg import -i "C:\Packages.xml" -r MyIpc
+```
+- Below is an exmaple format required for the `xml` file
+- The versions can be left blank and in case versions do no matter.
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="TwinCAT.Standard.XAE" version="4026.20" />
+  <package id="TF5000.NCPTP.XAE" version="1.0.4" />
+  <package id="TF5000.NCPTP.XAR" version="3.1.5036" />
+  <package id="TF5100.NCI.XAE" version="1.0.2" />
+  <package id="TF5120.Robotics-mxAutomation.XAE" version="1.0.2" />
+  <package id="TF5200.CNC.XAE" version="4.27.0" />
+  <package id="TF5210.CNCE.XAE" version="4.27.0" />
+  <package id="TF5210.CNCE.XAR" version="4.27.0" />
+  <package id="TF5400.AdvancedMotionPack.XAE" version="3.4.19" />
+  <package id="TF5400.AdvancedMotionPack.XAR" version="3.4.19" />
+  <package id="TF5850.XTS.XAE" version="4.4.2" />
+  <package id="TF5890.XPlanar.XAE" version="4.5.3" />
+  <package id="TF6010.AdsMonitor.XAE" version="1.0.0" />
+  <package id="TF6100.OpcUaConfigurator.XAE" version="4.5.8" />
+  <package id="TF6100.OpcUaGateway.XAR" version="4.4.6" />
+  <package id="TF6100.OpcUaServer.XAE" version="5.2.123" />
+  <package id="TF6100.OpcUaServer.XAR" version="5.2.123" />
+  <package id="TF610x.OpcUaClientPubSub.XAE" version="1.0.11" />
+  <package id="TF610x.OpcUaClientPubSub.XAR" version="1.0.11" />
+</packages>
+```
+
+### Remote control
+- TcPkg supports controlling a remote instance of TcPkg over SSH, allowing you to relay both commands and package downloads to a connected IPC. This is especially useful when the IPC does not have internet access, but your engineering laptop does.
+
+```shell
+# replace 169.254.165.127 with your ipc's ip address
+# the --internet-access false will use your engineering computer's internet and feeds for obtaining packages.
+tcpkg remote add -n MyIpc --host 169.254.165.127 --port 22 -u Administrator --internet-access false
+```
+
+>[!Note] Errors Connection Errors  
+> The default password for a Beckhoff IPC is too small to be used for SSH. Therefore you must change your IPC's password first so something secure.
+>
+> You will be told `Permission denied, please try again.` and `The password does not meet the password policy requirements. Check the minimum password length, password complexity and password history requirements.` if your password is too short.
+
+### More info
+- for more information, checkout this [Repo](https://github.com/benhar-dev/tcpkg-cheatsheet) from Benhar-dev.
+
+
+
 ## ADS PowerShell commands
 - There is a package that needs to be downloaded called `TcXaeMgmt`
 - Open PowerShell as Administrator and run:  
@@ -211,6 +292,3 @@ tcpkg uninstall all
 -
 -
 -
-
-
-
