@@ -234,7 +234,7 @@ tcpkg import -i "C:\Packages.xml" -r MyIpc
 tcpkg remote add -n MyIpc --host 169.254.165.127 --port 22 -u Administrator --internet-access false
 ```
 
->[!Note] Errors Connection Errors  
+>[!Note]
 > The default password for a Beckhoff IPC is too small to be used for SSH. Therefore you must change your IPC's password first so something secure.
 >
 > You will be told `Permission denied, please try again.` and `The password does not meet the password policy requirements. Check the minimum password length, password complexity and password history requirements.` if your password is too short.
