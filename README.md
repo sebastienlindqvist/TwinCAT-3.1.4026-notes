@@ -9,7 +9,7 @@ This is a personal repo for personal use relating to TwinCAT 3.1.4026, I'm addin
 - [Run TwinCAT 3.1.4026 locally on Dev Laptop](#run-locally-on-windows-11-dev-laptop)
 - [ADS error 4132 (0x1024)](#adserror-4132-0x1024-rtime-incompatible-software-detected--failed)
 - [Increasing Memory for Usermode Runtime](#increasing-memory-for-usermode-runtime)
-- [TcPkg Functions and Options](#tcpkg-cli---featuresoptions)
+- [TcPkg command line Functions and Options](#tcpkg-cli---featuresoptions)
 - [Control TwinCAT via Command Line](#ads-powershell-commands)
 - [TwinCAT 2 and TwinCAT 3.1.4026 on same machine](#twincat-2-and-twincat-314026-on-same-machine)
 - [Convert TwinCAT 2 projects (.pro) to TwinCAT 3.1.4026](#convert-twincat-2-projects-pro-to-twincat-3)
@@ -280,7 +280,7 @@ tcpkg remote add -n MyIpc --host 169.254.165.127 --port 22 -u Administrator --in
 - Trying to installed packages after having VS2026 beta installed could cause the following error:  
 	`Error: The given key 'VS18' was not present in the dictionary. Upgrade of TcPkgUI packages failed. ExitCode: 574`  
 - You'll need to uninstall VS2026 via the `Visual Studio Installer` which will allow the package manager to function again.
-- This integration issue will be resolved with using `TwinCAT 3.1.4024.21 XAE/XAR`
+- This integration issue is resolved with using `>= TwinCAT 3.1.4026.21 XAE/XAR`
 ## TE9000 - Safety Projects
 - Trying to add a `TE9000` Safety project to a TwinCAT solution open in Visual Studios
 	- Option to `add New item...` is greyed.
