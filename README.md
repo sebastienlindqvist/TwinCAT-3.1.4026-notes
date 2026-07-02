@@ -47,17 +47,18 @@ tcpkg source add -n="Beckhoff Stable Feed" -s=https://public.tcpkg.beckhoff-clou
 ```shell
 tcpkg install TwinCAT.XAE.MigrateCli
 ```
-6. You can skip this step if you want, Run the migration in test mode
+6. After it has been installed, close and reopen Command Line
+7. You can skip this step if you want, Run the migration in test mode
 ```shell
 TcMigrateCmd upgrade
 ```
-6. Then run the migration without testing
+8. Then run the migration without testing
 ```shell
 TcMigrateCmd upgrade --whatIf False
 ```
-8. This will start the migration
+9. This will start the migration
 	- Best time to have a coffee/tea because this will take a while
-9. Halfway through, your computer will request to restart
+10. Halfway through, your computer will request to restart
 	1. When it restarts **DO NOT DO ANYTHING**
 	2. A new command prompt should open/be requested to open and will continue the migration
 	3. This should attempt to reinstall the equivalent 4026 version of 4024 packages you had installed  
@@ -105,10 +106,42 @@ tcpkg uninstall all
 - Then download the 4024 .exe
 - If you have a partial install of v4026, you'll need to complete it prior to uninstalling to confirm everything has been removed
 
+## SSL connection could not be established
+- In case Package Manager shows an error `The SSL connection could not be established, see inner exception.`
+
+>![alt text](images/SSLConnectionError.png)
+- This could be due to IT restrictions.
+- Search the feed URL in a search engine and it should ask for your myBeckhoff email and password.
+- It could be the IPv6 checkbox is ticked for the network adapter that is used to connect to the feed.
+
 ## Run locally on Windows 11 Dev Laptop
 - There are a few methods to running TwinCAT project localy on Windows 11.
-- Run the following powershell executable:  
+- Run the following powershell executable as `Administrator`:  
 `C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\System\DisableVirtualizationBasedSecurity.ps1`
+After the restart, the User will be prompted with 2 consecutive questions:
+
+1. Windows Credential Guard which can be left on
+2. Virtual-Based Security will need to be turned off. 
+
+The device will now boot into Windows login.  TwinCAT 4026 can now be activated locally.
+
+In case of any errors when executing the PowerShell executable, please ensure Administrative permission was given. To rectify this, open PowerShell as Administrator.
+
+Navigate to the necessary directory with the following command:
+```shell
+    cd “C:\Program Files (x86)\Beckhoff\TwinCAT\3.1\System\”
+```
+Then run the PowerShell executable:
+```shell
+    .\DisableVirtualizationBasedSecurity.ps1
+```
+Follow the steps and restart the device when instructed and answer the 2 questions:  
+Windows Credential Guard which can be left on. 
+Virtual-Based Security will need to be turned off.
+
+>[!important] NOTE: 
+>This will require Administrative rights to run correctly. Running this PowerShell will prevent Docker, Containers, Virtual Machines and Windows Subsystem Linux from working. Any attempt to re-enable these options will cause TwinCAT XAR to no longer run locally and will require the PowerShell executable to be rerun.
+
 ### Usermode Runtime:
 - Alternatively, install the workload `Usermode Runtime` which creates a target that is running above the OS.  
 
