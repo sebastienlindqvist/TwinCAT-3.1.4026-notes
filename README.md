@@ -139,8 +139,8 @@ Follow the steps and restart the device when instructed and answer the 2 questio
 Windows Credential Guard which can be left on. 
 Virtual-Based Security will need to be turned off.
 
->[!important] NOTE: 
->This will require Administrative rights to run correctly. Running this PowerShell will prevent Docker, Containers, Virtual Machines and Windows Subsystem Linux from working. Any attempt to re-enable these options will cause TwinCAT XAR to no longer run locally and will require the PowerShell executable to be rerun.
+>[!important]
+> This will require Administrative rights to run correctly. Running this PowerShell will prevent Docker, Containers, Virtual Machines and Windows Subsystem Linux from working. Any attempt to re-enable these options will cause TwinCAT XAR to no longer run locally and will require the PowerShell executable to be rerun.
 
 ### Usermode Runtime:
 - Alternatively, install the workload `Usermode Runtime` which creates a target that is running above the OS.  
